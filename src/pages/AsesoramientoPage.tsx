@@ -9,8 +9,8 @@ const AsesoramientoPage: React.FC = () => {
     {
       nombre: "Prof. Dr. Alejandro Néstor García Martínez",
       email: "angarcia@unav.es",
-      despacho: "Despacho 2330 Edificio Ismael Sánchez Bella (Biblioteca antigua) Planta 2ª, Departamento de Filosofía.",
-      horario: "Lunes de 9:00 a 10:30 y Viernes de 11:00 a 12:00 horas."
+      despacho: "Despacho 2470 Edificio Ismael Sánchez Bella (Biblioteca antigua) Planta 2ª, Departamento de Ciencia Política y Sociología.",
+      horario: "Lunes de 9:00 a 10:30 y Viernes de 10:30 a 11:30 horas."
     }
   ];
 

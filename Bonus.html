@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bonus: Estudio asistido por IA</title>
+
+  <!-- Google Fonts (Poppins + Roboto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Qf1q0Vg6s8Ew6QJr6x2Wz8q3lKQ1H0v9m7e1n0+k3Yf3M1IuKx4m0Qm3Y2y1b0Qz6m7X8V7k2l1H3f4a5b6c7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root{
+      --primary-blue: #5391cc; /* from constants/colors.ts */
+      --bg-from: #eff6ff; /* blue-50 */
+      --bg-to: #eef2ff;   /* indigo-50-ish */
+      --container-max: 1100px;
+      --radius-lg: 16px;
+      --shadow-md: 0 8px 24px rgba(16,24,40,0.08);
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: var(--font-body);
+      background: linear-gradient(180deg,var(--bg-from),var(--bg-to));
+      color:#0f172a; /* slate-900 */
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px 0; /* solo espaciado vertical para el contenido */
+      line-height:1.6;
+    }
+
+  /* (Header removed for standalone page) */
+
+    main{max-width:var(--container-max); margin:0 auto; padding:28px 20px}
+
+    .card{
+      background:white; border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:28px; position:relative; overflow:hidden;
+    }
+
+    /* decorador orgánico (sutil) */
+    .card::after{
+      content:''; position:absolute; right:-10%; top:-20%; width:260px; height:160px; z-index:0; opacity:0.26;
+      background: linear-gradient(135deg, rgba(83,145,204,0.12), rgba(49,130,206,0.18));
+      transform:rotate(14deg); border-radius:60% 40% 30% 70% / 70% 30% 70% 40%; pointer-events:none;
+    }
+    .card > *{position:relative; z-index:2}
+
+    h2{font-family:var(--font-heading); color:var(--primary-blue); margin:0 0 12px 0; font-size:1.45rem}
+    .lead{font-size:1.05rem; color:#0b1220; margin-bottom:18px}
+
+    .example{background:#f8fafc; border-radius:12px; padding:14px; border-left:4px solid var(--primary-blue); margin:14px 0}
+    .muted{color:#475569}
+
+    ul.check{padding-left:1.15rem}
+    ul.check li{margin:8px 0}
+
+    .deadlines{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .deadline{background:#fff; border:1px solid #e6eef9; padding:10px 12px; border-radius:10px; min-width:170px}
+    .deadline b{display:block; color:var(--primary-blue)}
+
+    .links{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; text-decoration:none; background:var(--primary-blue); color:white; font-weight:600;
+      transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+      will-change: transform;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+    }
+    .btn:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(16,24,40,0.12);
+    }
+    .btn:focus{
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(83,145,204,0.12);
+    }
+    .btn.secondary{background:white; color:var(--primary-blue); border:1px solid rgba(83,145,204,0.14); transition: transform .18s ease, background-color .18s ease, color .18s ease, box-shadow .18s ease}
+    .btn.secondary:hover{
+      background: var(--primary-blue);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(16,24,40,0.10);
+    }
+    .btn i{width:16px; text-align:center; transition: transform .18s ease, color .18s ease}
+    .btn:hover i, .btn:focus i{ transform: translateY(-2px) rotate(-6deg); }
+
+  /* (Footer removed for standalone page) */
+
+    /* Responsive tweaks */
+    @media (min-width:768px){
+      main{padding:36px 24px}
+      h2{font-size:1.8rem}
+    }
+    /* Final note callout */
+    .note-final{
+      margin-top:18px; font-size:0.98rem; color:#0b1220; background: linear-gradient(90deg, rgba(83,145,204,0.04), rgba(49,130,206,0.02));
+      border-left:4px solid var(--primary-blue); padding:12px 14px; border-radius:10px; display:flex; gap:12px; align-items:flex-start; box-shadow:0 6px 20px rgba(16,24,40,0.04);
+    }
+    .note-final i{ color:var(--primary-blue); font-size:1.15rem; margin-top:4px }
+    .note-final p{ margin:0; color:#0f172a; line-height:1.55 }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card" aria-labelledby="titulo-principal">
+      <h2 id="titulo-principal">ESTUDIO ASISTIDO POR IA</h2>
+      <p class="lead">Los alumnos que lo deseen, pueden mejorar su calificación obtenida en los test individuales de cada tema del curso acreditando que han ido reflexionado y estudiado sobre esos contenidos con la asistencia de la Inteligencia Artificial.</p>
+
+      <div class="muted">Para cada tema, el alumno que cumpla los dos requisitos incrementará un <strong>50%</strong> la nota de su peor test individual en ese tema.</div>
+
+      <div class="example" role="note" aria-label="ejemplo de cálculo">
+        <strong>Ejemplo:</strong>
+        <p class="muted" style="margin:8px 0 0 0">Si un alumno obtiene en los módulos del tema 1: 80% (módulo 1), 100% (módulo 2) y 45% (módulo 3), aplicando el bonus el módulo 3 mejora un 50%, obteniendo <strong>95%</strong>.</p>
+      </div>
+
+      <h3 style="font-family:var(--font-heading); color:var(--primary-blue); margin-top:18px; margin-bottom:8px; font-size:1.1rem">Para obtener este bonus debe cumplir con las siguientes condiciones (aplicable a cada tema):</h3>
+      <ul class="check" aria-label="condiciones">
+        <li>Haber obtenido la certificación que acredita el estudio y conocimiento suficientes de los contenidos del tema (actividad "Test para Certificación" en la <a href="https://sociologia.teambased-learning.com/" target="_blank" rel="noopener noreferrer">aplicación web</a>).</li>
+        <li>Enviar a través del <a href="https://forms.gle/fRpim6A3ZogyUJnd8" target="_blank" rel="noopener noreferrer">formulario</a> los enlaces compartidos de sus interacciones con el <strong>Tutor SocioSocrático</strong> para cada tema, junto a una reflexión valorativa. Es responsabilidad del alumno que los enlaces sigan operativos hasta el final del curso, para poder ser revisados por el profesor. Estas interacciones deben acreditar una reflexión profunda, más allá de la mera descripción o resumen de conceptos.</li>
+        <li>Deben cumplirse las dos condiciones anteriores dentro de la fecha límite establecida para cada tema.</li>
+      </ul>
+
+      <div style="margin-top:14px">
+        <div class="muted">Fechas límite para el cumplimiento de los requisitos (sujetas a actualización):</div>
+        <div class="deadlines" aria-hidden="false">
+          <div class="deadline"><b>Tema 1</b><span class="muted">1 de octubre</span></div>
+          <div class="deadline"><b>Tema 2</b><span class="muted">20 de octubre</span></div>
+          <div class="deadline"><b>Tema 3</b><span class="muted">20 de noviembre</span></div>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0; border:none; height:1px; background:#eef6ff">
+
+      <div id="acceso">
+        <h3 style="font-family:var(--font-heading); color:var(--primary-blue); margin-bottom:10px; font-size:1.05rem">Accesos directos:</h3>
+        <div class="links">
+          <a class="btn secondary" href="https://sociologia.teambased-learning.com/" target="_blank" rel="noopener noreferrer" title="Aplicación web (abre en nueva pestaña)">
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            aplicación SociologIA
+          </a>
+          <a class="btn secondary" href="https://forms.gle/fRpim6A3ZogyUJnd8" target="_blank" rel="noopener noreferrer" title="Formulario de estudio y reflexión asistidos por IA (abre en nueva pestaña)">
+            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+            Formulario de estudio y reflexión asistidos por IA
+          </a>
+        </div>
+      </div>
+
+      <div class="note-final" role="note" aria-label="nota importante">
+        <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+        <p><strong>Nota importante:</strong> El alumno debe asegurarse de que los <strong>enlaces</strong> a sus interacciones con el <strong>Tutor SocioSocrático</strong> permanezcan operativos hasta el final del curso para que el profesor pueda revisarlos correctamente.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
